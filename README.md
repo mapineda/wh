@@ -30,13 +30,26 @@ Work Harmony was born in 2013 at Startup Weekend in Bloomington, IN where the pr
 
 ## Process
 
+### Video ###
+
+Check out the video on [Vimeo](https://vimeo.com/79741702)
+
 ### ERD ###
 
 ![ERD](https://cloud.githubusercontent.com/assets/8691910/11040279/103b5cd2-86d1-11e5-9093-180e68d08d3b.png)
 
-### Video ###
+### User Flow ###
 
-Check out the video on [Vimeo](https://vimeo.com/79741702)
+Employee:
+
+1. Login Using LinkedIn account
+2. Fill out personality questionnaire
+
+Project Manager:
+
+1. Login Using Linkedin account
+2. Create Team
+
 
 ## Resources
 
