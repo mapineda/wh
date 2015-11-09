@@ -30,9 +30,9 @@ Work Harmony was born in 2013 at Startup Weekend in Bloomington, IN where the pr
 
 ## Process
 
-### ERD
+### ERD ###
 
-### Video
+### Video ###
 
 Check out the video on [Vimeo](https://vimeo.com/79741702)
 
@@ -43,5 +43,7 @@ ReactJS
 MongoDB
 
 Find out more about personality matching here 
+
+## Contact
 
 
