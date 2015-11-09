@@ -33,6 +33,11 @@ Check out the video on [Vimeo](https://vimeo.com/79741702)
 * Node.js
 * MySQL
 
+## Methodology ##
+
+* Agile Web Dev 
+* Test Driven Dev
+
 ## Process
 
 ### ERD ###
