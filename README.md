@@ -19,6 +19,10 @@ Work Harmony uses gamification and personality matching algorithms to build the 
 
 Work Harmony was born in 2013 at Startup Weekend in Bloomington, IN where the project placed second and advanced to the Global competition. 
 
+### Video ###
+
+Check out the video on [Vimeo](https://vimeo.com/79741702)
+
 ## Tech Used
 
 * JavaScript
@@ -26,13 +30,10 @@ Work Harmony was born in 2013 at Startup Weekend in Bloomington, IN where the pr
 * HTML5
 * CSS3
 * Bootstrap
-* MongoDB
+* Node.js
+* MySQL
 
 ## Process
-
-### Video ###
-
-Check out the video on [Vimeo](https://vimeo.com/79741702)
 
 ### ERD ###
 
@@ -49,6 +50,10 @@ Project Manager:
 
 1. Login Using Linkedin account
 2. Create Team
+
+### Algorithm ###
+
+Geometric Mean: A type of mean or average which indicates the central tendency or typical value of a set of numbers.
 
 
 ## Resources
