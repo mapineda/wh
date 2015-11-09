@@ -616,7 +616,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 #smartbanner.windows .sb-icon { border-radius: 0px; }
 /* Squad */
 #squad {
-  background: transparent url('http://www.futhead.com/static/img/14/pitch.jpg') no-repeat;
+  background: transparent #425f9c no-repeat;
   position: relative;
   height: 780px;
   width: 910px;
