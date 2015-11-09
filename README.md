@@ -46,4 +46,8 @@ Find out more about personality matching here
 
 ## Contact
 
+Find me on [Linkedin](http://linkedin/in/pinedamarco)
+
+Email me at mp@marcopineda.com
+
 
