@@ -31,7 +31,7 @@ Check out the video on [Vimeo](https://vimeo.com/79741702)
 * CSS3
 * Bootstrap
 * Node.js
-* MySQL
+* PostgreSql
 
 ## Methodology ##
 
@@ -46,15 +46,14 @@ Check out the video on [Vimeo](https://vimeo.com/79741702)
 
 ### User Flow ###
 
-Employee:
-
-1. Login Using LinkedIn account
-2. Fill out personality questionnaire
-
 Project Manager:
 
-1. Login Using Linkedin account
-2. Create Team
+1. Create Team
+
+Employee:
+
+1. Login into team using email, password
+2. Fill out personality questionnaire
 
 ### Algorithm ###
 
@@ -64,8 +63,6 @@ Geometric Mean: A type of mean or average which indicates the central tendency o
 ## Resources
 
 ReactJS
-
-MongoDB
 
 Find out more about personality matching here 
 
