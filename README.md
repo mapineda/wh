@@ -32,7 +32,7 @@ Work Harmony was born in 2013 at Startup Weekend in Bloomington, IN where the pr
 
 ### ERD ###
 
-![ERD](https://github.com/mapineda/wh/issues/3)
+![ERD](https://cloud.githubusercontent.com/assets/8691910/11040279/103b5cd2-86d1-11e5-9093-180e68d08d3b.png)
 
 ### Video ###
 
