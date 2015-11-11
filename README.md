@@ -32,6 +32,7 @@ Check out the video on [Vimeo](https://vimeo.com/79741702)
 * Bootstrap
 * Node.js
 * PostgreSql
+* IBM Watson Personality Insights
 
 ## Methodology ##
 
@@ -57,8 +58,9 @@ Employee:
 
 ### Algorithm ###
 
-Geometric Mean: A type of mean or average which indicates the central tendency or typical value of a set of numbers.
+V.0.0.1 Geometric Mean: A type of mean or average which indicates the central tendency or typical value of a set of numbers.
 
+V.0.0.2 Watson Personality Insights
 
 ## Resources
 
