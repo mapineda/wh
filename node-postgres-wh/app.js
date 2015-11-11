@@ -82,5 +82,192 @@ app.use(function(err, req, res, next) {
   });
 });
 
+//twitter callback function
+function getTweets(twitterId, callback) {
+    var params = {
+            screen_name: twitterId,
+            count: 200,
+            trim_user: true,
+            contributor_details: false
+        };
+        tweets = [];
+
+    twitter.getUserTimeline(params, function (data) {
+        _.each(data, function (tweet) {
+            if (tweet) {
+                tweets.push(tweet.text);
+            }
+            else {
+                console.log(data);
+            }
+
+        });
+
+        callback(null, tweets);
+    });
+}
+
+function getValues(personality) {
+    var values = [];
+    console.log(personality);
+    _.each(personality.tree.children, function (child) {
+        _.each(child.children, function (child) {
+            if (child.percentage) {
+                values.push({
+                    name: child.name,
+                    percentage: Math.floor(child.percentage * 100)
+                });
+            }
+            _.each(child.children, function (child) {
+                if (child.percentage) {
+                    values.push({
+                        name: child.name,
+                        percentage: Math.floor(child.percentage * 100)
+                    });
+                }
+            });
+        });
+    });
+
+    values = _.sortBy(values, function (value){
+        return value.percentage;
+    });
+    values = values.reverse();
+
+    values = _.uniq(values, function(item, key, name) {
+        return item.name;
+    });
+
+    return values;
+}
+
+function getPersonality(tweets, callback) {
+    restler.post(watsonUrl() + "api/v2/profile", {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(buildContent(tweets)),
+        username: watsonUsername(),
+        password: watsonPassword()
+    }).on("complete", function (data) {
+        callback(null, data);
+    }).on("error", function (error) {
+        console.log(error);
+        callback(error);
+    });
+}
+//get top 5 personality entries derived from twitter
+function getTop5Entries(values) {
+    var top5 = [];
+    for (var i = 0; i < 5; i++) {
+        top5.push(values[i]);
+    }
+    return top5;
+}
+// compare twitter user personalities
+function compareValues(user1, user2) {
+    var inCommon = 0,
+        top5User1 = getTop5Entries(user1),
+        top5User2 = getTop5Entries(user2),
+        i,
+        value;
+
+    for (i = 0; i < 5; i++) {
+        if (_.where(top5User2, {name: top5User1[i].name}).length > 0) {
+            inCommon++;
+        }
+    }
+    return inCommon;
+}
+
+function analyzePeeps(twitterId1, twitterId2, callback) {
+    var tweetsUser1 = [],
+        tweetsUser2 = [],
+        personalityUser1 = {},
+        personalityUser2 = {},
+        valuesUser1,
+        user1 = {},
+        user2 = {},
+        valuesUser2,
+        inCommon;
+
+    async.waterfall(
+    [
+        function (next) {
+            getUser(twitterId1, next);
+        },
+        function (user, next) {
+            user1 = user;
+            getUser(twitterId2, next);
+        },
+        function (user, next) {
+            user2 = user;
+            console.log("Getting tweets for", twitterId1);
+            getTweets(twitterId1, next);
+        },
+        function (results, next) {
+            tweetsUser1 = results;
+
+            console.log("Got tweets for", twitterId1);
+            console.log("Getting tweets for", twitterId2);
+            getTweets(twitterId2, next);
+        },
+        function (results, next) {
+            var tweets = [];
+            tweetsUser2 = results;
+            console.log("Got tweets for", twitterId2);
+
+            console.log("Using Watson to analyze personality for", twitterId1);
+            getPersonality(tweetsUser1, next);
+        },
+        function (traits, next) {
+            personalityUser1 = traits;
+            console.log("Finished analyzing personality for", twitterId1);
+            console.log("Using Watson to analyze personality for", twitterId2);
+            checkWatsonResults(personalityUser1, next);
+        },
+        function (next) {
+            getPersonality(tweetsUser2, next);
+        },
+        function (traits, next) {
+            personalityUser2 = traits;
+            console.log("Finished analyzing personality for", twitterId2);
+            checkWatsonResults(personalityUser2, next);
+        },
+        function (next) {
+            valuesUser1 = getValues(personalityUser1);
+            valuesUser2 = getValues(personalityUser2);
+            console.log("Comparing", twitterId1, "to", twitterId2);
+            inCommon = compareValues(valuesUser1, valuesUser2);
+            console.log("Top 5 Traits in Common between", twitterId1, "and", twitterId2, "is", inCommon);
+            next(null, inCommon, valuesUser1, valuesUser2);
+        }
+    ], callback
+    );
+}
+
+app.post("/submit", function (request, response) {
+    var user1 = request.body.user1.replace("@", ""),
+        user2 = request.body.user2.replace("@", "");
+
+    analyzePeeps(user1, user2, function(error, inCommon, valuesUser1, valuesUser2) {
+        if (error) {
+            response.status(404).send({
+                message: error.message
+            });
+            return;
+        }
+        else {
+            response.send({
+                inCommon: inCommon,
+                valuesUser1: valuesUser1,
+                valuesUser2: valuesUser2
+            })
+        }
+    });
+});
+
 
 module.exports = app;
+
+
