@@ -1,14 +1,28 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express = require('express'),
+    app = express(),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    Twitter = require('twitter'),
+    twitter = new Twitter({
+        consumer_key: "",
+        consumer_secret: "",
+        access_token_key: "",
+        access_token_secret: ""
+    });
+
+var watson = require('watson-developer-cloud');
+var personality_insights = watson.personality_insights({
+  username: '5e24dac8-ac8b-4204-820d-11d90c0bce2e',
+  password: 'rbsjL2ifkw0F',
+  version: 'v2'
+});    
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
