@@ -1,14 +1,51 @@
+html {
+	box-sizing: none;
+	margin: 0;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 2px;
+  background-color: #425f9c;
+  width: 100%;
+
 }
 
 a {
-  color: #00B7FF;
+	text-shadow: 0px 1px 1px #4d4d4d;
+	font-weight: 10px;
+  	color: #2f477a;
+}
+
+
+/*main text */
+.main {
+	height: 500px;
+	width: 100%;
+	background-color: #425f9c;
+}
+
+.row {
+	padding-top: 20px;
+	padding-right: 25px;
+	padding-left: 25px; 
+
+}
+
+.well {
+	height: 240px;
+}
+
+.btn-primary {
+	background-color: #eb5900;
+	border-color: #eb5900;
 }
 
 footer {
-	color: red;
-	height: 640px;
-	width: 100%;
+	margin: 0 auto;
+	padding-top: 85px;
+}
+
+.footer-p {
+	color: white;
 }
