@@ -7,3 +7,38 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+
+<script type="text/javascript">
+	 $(function () {
+                $(".container .error").hide();
+                var form = $("#twitterHandles");
+                form.submit(function (ev) {
+                    $.ajax({
+                        type: form.attr("method"),
+                        url: form.attr("action"),
+                        data: form.serialize(),
+                        success: function (data) {
+                            var employee1 = $("input[name='employee1']").val(),
+                                employee2 = $("input[name='employee2']").val();
+
+                            $(".container .form").hide();
+                            $(".container .result").show();
+                            $(".container .result h3").text(employee1 + " and " + employee2 + " share " + data.inCommon + " out of the top 5 personality traits");
+                            $(".container .result .employee1 h4").text("Top 5 personality traits for " + employee1);
+                            $(".container .result .employee2 h4").text("Top 5 personality traits for " + employee2);
+                            for (var i = 0; i < 5; i++) {
+                                $(".container .result .employee1 ul").append($("<li>" + data.valuesEmployee1[i].name + "</li>"));
+                                $(".container .result .employee2 ul").append($("<li>" + data.valuesEmployee2[i].name + "</li>"));
+                            }
+                        },
+                        error: function (data) {
+                            $(".container .form").hide();
+                            $(".container .error").show();
+                            $(".container .error .message").text(data.message);
+                        }
+                    });
+                    ev.preventDefault();
+                });
+            });
+
+</script>
