@@ -21,6 +21,7 @@ var personality_insights = watson.personality_insights({
 });    
 
 var about = require('./routes/about');
+var features = require('./routes/features');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -50,6 +51,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/about', about);
+app.use('/features', features);
 app.use('/', routes);
 app.use('/users', users);
 
