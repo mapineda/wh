@@ -41,6 +41,33 @@ a {
 	border-color: #eb5900;
 }
 
+/*about page*/
+
+
+#gh {
+	background: url(https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png) no-repeat center;
+	background-size: contain;
+	border: 0;
+}
+
+#ibm {
+	background: url(http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/images/service-icons/PersonalityInsights.svg) no-repeat center;
+	background-size: contain;
+	border: 0;
+}
+
+.jumbotron-about {
+	height: 240px;
+
+}
+
+#ga {
+	background: url(http://challenges.s3.amazonaws.com/mta-app-quest/GA_logo.png) no-repeat center;
+	background-size: contain;
+	border: 0;
+}
+
+
 footer {
 	margin: 0 auto;
 	padding-top: 85px;
