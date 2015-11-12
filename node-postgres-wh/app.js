@@ -20,6 +20,7 @@ var personality_insights = watson.personality_insights({
   version: 'v2'
 });    
 
+var about = require('.routes/about');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -49,6 +50,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/about', about);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
