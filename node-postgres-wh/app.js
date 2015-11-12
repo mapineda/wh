@@ -7,10 +7,10 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     Twitter = require('twitter'),
     twitter = new Twitter({
-        consumer_key: "",
-        consumer_secret: "",
-        access_token_key: "",
-        access_token_secret: ""
+        consumer_key: "47lClo1iUlWNjUw244sv2NKqn",
+        Twitter_CON_SEC: "",
+        Twitter_ACS_TOK: "",
+        Twitter_ACS_TOK_KEY: ""
     });
 
 var watson = require('watson-developer-cloud');
