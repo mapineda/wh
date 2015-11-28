@@ -17,7 +17,9 @@ Work Harmony uses gamification and personality matching algorithms to build the 
 
 ## When
 
-Work Harmony was born in 2013 at Startup Weekend in Bloomington, IN where the project placed second and advanced to the Global competition. 
+Work Harmony was born in 2013 at Startup Weekend in Bloomington, IN where the project placed second and advanced to the Global competition.
+
+## Getting Started
 
 ### Video ###
 
